@@ -1,0 +1,154 @@
+{
+	"result": {
+		"app": {
+			"version": 14076,
+			"timestamp": 1746950465,
+			"time": "Sun May 11 01:01:05 2025"
+		},
+		"services": {
+			"SessionsLogon": "normal",
+			"SteamCommunity": "normal",
+			"IEconItems": "offline",
+			"Leaderboards": "idle"
+		},
+		"datacenters": {
+			"Peru": {
+				"capacity": "full",
+				"load": "idle"
+			},
+			"EU Germany": {
+				"capacity": "full",
+				"load": "low"
+			},
+			"EU Austria": {
+				"capacity": "full",
+				"load": "low"
+			},
+			"EU Poland": {
+				"capacity": "full",
+				"load": "low"
+			},
+			"Hong Kong": {
+				"capacity": "full",
+				"load": "low"
+			},
+			"EU Spain": {
+				"capacity": "full",
+				"load": "idle"
+			},
+			"Chile": {
+				"capacity": "full",
+				"load": "low"
+			},
+			"US California": {
+				"capacity": "full",
+				"load": "low"
+			},
+			"US Atlanta": {
+				"capacity": "full",
+				"load": "low"
+			},
+			"China Guangdong": {
+				"capacity": "full",
+				"load": "low"
+			},
+			"EU Sweden": {
+				"capacity": "full",
+				"load": "low"
+			},
+			"Emirates": {
+				"capacity": "full",
+				"load": "medium"
+			},
+			"US Seattle": {
+				"capacity": "full",
+				"load": "low"
+			},
+			"South Africa": {
+				"capacity": "full",
+				"load": "idle"
+			},
+			"Brazil": {
+				"capacity": "full",
+				"load": "idle"
+			},
+			"US Virginia": {
+				"capacity": "full",
+				"load": "idle"
+			},
+			"US Chicago": {
+				"capacity": "full",
+				"load": "idle"
+			},
+			"Japan": {
+				"capacity": "full",
+				"load": "low"
+			},
+			"China Pudong": {
+				"capacity": "full",
+				"load": "low"
+			},
+			"EU Finland": {
+				"capacity": "full",
+				"load": "low"
+			},
+			"India Mumbai": {
+				"capacity": "full",
+				"load": "low"
+			},
+			"India Chennai": {
+				"capacity": "full",
+				"load": "low"
+			},
+			"US Dallas": {
+				"capacity": "full",
+				"load": "idle"
+			},
+			"Argentina": {
+				"capacity": "full",
+				"load": "idle"
+			},
+			"South Korea": {
+				"capacity": "full",
+				"load": "low"
+			},
+			"United Kingdom": {
+				"capacity": "full",
+				"load": "idle"
+			},
+			"Singapore": {
+				"capacity": "full",
+				"load": "low"
+			},
+			"Australia": {
+				"capacity": "full",
+				"load": "low"
+			},
+			"China Beijing": {
+				"capacity": "full",
+				"load": "low"
+			},
+			"China Chengdu": {
+				"capacity": "full",
+				"load": "low"
+			}
+		},
+		"matchmaking": {
+			"scheduler": "normal",
+			"online_servers": 346063,
+			"online_players": 893676,
+			"searching_players": 10713,
+			"search_seconds_avg": 87
+		},
+		"perfectworld": {
+			"logon": {
+				"availability": "online",
+				"latency": "normal"
+			},
+			"purchase": {
+				"availability": "online",
+				"latency": "normal"
+			}
+		}
+	}
+}

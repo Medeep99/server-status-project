@@ -1,0 +1,448 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2822
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\froman\fcharset0 Times-Roman;\f1\fmodern\fcharset0 Courier;\f2\froman\fcharset0 Times-Bold;
+\f3\froman\fcharset0 TimesNewRomanPSMT;\f4\froman\fcharset0 Times-Italic;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid101\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid2}
+{\list\listtemplateid3\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid201\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid3}
+{\list\listtemplateid4\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid301\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid4}
+{\list\listtemplateid5\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid401\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{circle\}}{\leveltext\leveltemplateid402\'01\uc0\u9702 ;}{\levelnumbers;}\fi-360\li1440\lin1440 }{\listname ;}\listid5}
+{\list\listtemplateid6\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid501\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid6}
+{\list\listtemplateid7\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid601\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid7}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}{\listoverride\listid3\listoverridecount0\ls3}{\listoverride\listid4\listoverridecount0\ls4}{\listoverride\listid5\listoverridecount0\ls5}{\listoverride\listid6\listoverridecount0\ls6}{\listoverride\listid7\listoverridecount0\ls7}}
+\paperw11900\paperh16840\margl1440\margr1440\vieww30040\viewh18900\viewkind0
+\deftab720
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\fs24 \cf0 \expnd0\expndtw0\kerning0
+Understood. I\'92ll investigate the meaning of the 
+\f1\fs26 capacity
+\f0\fs24  and 
+\f1\fs26 load
+\f0\fs24  values for datacenters returned by the 
+\f1\fs26 ICSGOServers_730
+\f0\fs24  interface and method 
+\f1\fs26 GetGameServerStatus
+\f0\fs24  in the official Steam Web API. I will also find out if there is an equivalent method/interface for CS2 server status, and whether CS2 and CS:GO use the same backend servers.\
+I\'92ll use only official documentation and resources from Steam to ensure accuracy and relevance for your project. I\'92ll follow up shortly with detailed findings.\
+\pard\pardeftab720\sa321\partightenfactor0
+
+\f2\b\fs48 \cf0 Steam Web API: CS:GO/CS2 Server Status\
+\pard\pardeftab720\sa298\partightenfactor0
+
+\fs36 \cf0 Datacenter \'93capacity\'94 vs \'93load\'94 (ICSGOServers_730/GetGameServersStatus)\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\b0\fs24 \cf0 The JSON from
+\f3 \uc0\u8239 
+\f1\fs26 ICSGOServers_730/GetGameServersStatus
+\f0\fs24  reports each datacenter with a 
+\f2\b capacity
+\f0\b0  and 
+\f2\b load
+\f0\b0 . In practice all known datacenters show 
+\f1\fs26 "capacity": "full"
+\f0\fs24 . This implies that 
+\f4\i capacity: full
+\f0\i0  simply means the data center is fully operational (all servers enabled), not that it\'92s overloaded. The actual utilization is given by 
+\f2\b load
+\f0\b0 . Observed load values include 
+\f1\fs26 "idle"
+\f0\fs24 , 
+\f1\fs26 "low"
+\f0\fs24 , 
+\f1\fs26 "medium"
+\f0\fs24 , and 
+\f1\fs26 "high"
+\f0\fs24 . These appear to be qualitative tiers of server usage (e.g. \'93idle\'94 = minimal traffic, \'93high\'94 = very busy). In summary:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa240\partightenfactor0
+\ls1\ilvl0
+\f2\b \cf0 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Capacity
+\f0\b0  \'96 Seen as 
+\f2\b full
+\f0\b0  when the datacenter is online and serving games. No \'93overload\'94 status is documented; an offline or maintenance state would likely be indicated differently (though Valve hasn\'92t published other values).\
+\ls1\ilvl0
+\f2\b \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Load
+\f0\b0  \'96 Values seen are 
+\f4\i idle/low/medium/high
+\f0\i0 . They reflect current server load. (For example, a datacenter can have 
+\f1\fs26 capacity: "full"
+\f0\fs24  with 
+\f1\fs26 load: "low"
+\f0\fs24 , meaning it\'92s fully online but lightly used.)\
+\pard\pardeftab720\sa298\partightenfactor0
+
+\f2\b\fs36 \cf0 Current status of ICSGOServers_730/GetGameServersStatus (CS:GO)\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\b0\fs24 \cf0 The 
+\f1\fs26 ICSGOServers_730
+\f0\fs24  interface (version 1) remains part of Steam\'92s Web API. It is listed in Steam\'92s API documentation as of 2025. In other words, 
+\f1\fs26 ICSGOServers_730/GetGameServersStatus/v1
+\f0\fs24  is still a supported endpoint for CS:GO. Valve has provided no notice of deprecation. (Developers can verify its presence via the ISteamWebAPIUtil/GetSupportedAPIList call.)\
+\pard\pardeftab720\sa298\partightenfactor0
+
+\f2\b\fs36 \cf0 CS2 server-status interface\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\b0\fs24 \cf0 Counter-Strike\'a02 uses the same Steam AppID (730) as CS:GO, so it does 
+\f2\b not
+\f0\b0  have a separate \'93CS2\'94 status API. In effect, the 
+\f2\b ICSGOServers_730
+\f0\b0  endpoints serve both CS:GO and CS2. For example, Valve\'92s CS2 leaderboard data is fetched via 
+\f1\fs26 ICSGOServers_730/GetLeaderboardEntries
+\f0\fs24 . Likewise, the public API listings group ICSGOServers_730 under \'93CS:GO/CS2\'94 interfaces. In short, there is no distinct CS2 server-status interface \'96 use the same ICSGOServers_730 methods with appid\'a0730.\
+\pard\pardeftab720\sa298\partightenfactor0
+
+\f2\b\fs36 \cf0 Shared CS:GO/CS2 infrastructure\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\b0\fs24 \cf0 CS2 runs on Valve\'92s existing game-server network \'96 the same backend that served CS:GO. Both use AppID\'a0730 and the Steam dedicated-server system. (For instance, CS2 dedicated servers use the same Game Server Login Token setup as CS:GO.) Valve has not announced separate datacenter networks for CS2. Thus the official game servers and relays (Steam Datagram Relay) are shared between CS:GO and CS2. Users can expect CS2 matches to route through the same regional datacenters and relays that CS:GO used.\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f2\b \cf0 Sources:
+\f0\b0  Official Steam Web API documentation and Valve developer resources (with example API output).\
+\
+\
+\
+\pard\pardeftab720\sa240\partightenfactor0
+\cf0 \outl0\strokewidth0 \strokec2 Got it. I\'92ll provide a complete explanation of all keys and values returned by the ICSGOServers_730 
+\f1\fs26 GetGameServerStatus
+\f0\fs24  method, including their meanings, possible value ranges, and what each indicator implies.\
+This will help you build a reliable server monitoring tool for CS:GO/CS2 using the Steam Web API. I\'92ll follow up shortly with a full breakdown.\
+\pard\pardeftab720\sa321\partightenfactor0
+
+\f2\b\fs48 \cf0 ICSGOServers_730/GetGameServersStatus JSON Keys Explained\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\b0\fs24 \cf0 The 
+\f2\b ICSGOServers_730/GetGameServersStatus
+\f0\b0  endpoint (Steam Web API) returns a JSON object summarizing the health of various CS:GO/CS2 services. This method takes no parameters and returns five top-level sections: 
+\f1\fs26 app
+\f0\fs24 , 
+\f1\fs26 services
+\f0\fs24 , 
+\f1\fs26 datacenters
+\f0\fs24 , 
+\f1\fs26 matchmaking
+\f0\fs24 , and 
+\f1\fs26 perfectworld
+\f0\fs24 . Each section contains keys described below, along with their meanings and possible values.\
+\pard\pardeftab720\sa298\partightenfactor0
+
+\f2\b\fs36 \cf0 app\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa240\partightenfactor0
+\ls2\ilvl0
+\fs24 \cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 version
+\f0\b0 : The CS:GO (or CS2) server build number (integer). For example, 
+\f1\fs26 "version": 13736
+\f0\fs24 . This increments with game updates and identifies the deployed game build. (Stable field; always present.)\
+\ls2\ilvl0
+\f2\b \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 timestamp
+\f0\b0 : The status-report generation time as a Unix epoch (integer). E.g. 
+\f1\fs26 "timestamp": 1578937064
+\f0\fs24 . Any valid Unix timestamp may appear. (Stable field.)\
+\ls2\ilvl0
+\f2\b \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 time
+\f0\b0 : A human-readable string of the above timestamp (e.g. 
+\f1\fs26 "Mon Jan 13 09:37:44 2020"
+\f0\fs24 ). Provided for convenience only. (Stable field; not used for logic.)\
+\pard\pardeftab720\sa240\partightenfactor0
+\cf0 These fields tell you which game version the report refers to and when it was produced.\
+\pard\pardeftab720\sa298\partightenfactor0
+
+\f2\b\fs36 \cf0 services\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\b0\fs24 \cf0 Each key here is a backend subsystem for CS:GO, with its current status. Possible values (seen in practice) include:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa240\partightenfactor0
+\ls3\ilvl0
+\f1\fs26 \cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 "normal"
+\f0\fs24  (service is operating correctly),\
+\ls3\ilvl0
+\f1\fs26 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 "delayed"
+\f0\fs24  (experiencing lag/backlog),\
+\ls3\ilvl0
+\f1\fs26 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 "offline"
+\f0\fs24  (service unavailable), or\
+\ls3\ilvl0
+\f1\fs26 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 "idle"
+\f0\fs24  (online but currently inactive).\
+\pard\pardeftab720\sa240\partightenfactor0
+\cf0 For example, in the API output:\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs26 \cf0 "services": \{\
+  "SessionsLogon": "normal", \
+  "SteamCommunity": "delayed", \
+  "IEconItems": "offline", \
+  "Leaderboards": "idle"\
+\}\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\fs24 \cf0 .\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa240\partightenfactor0
+\ls4\ilvl0
+\f2\b \cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 SessionsLogon
+\f0\b0 : Sign-on/session service. 
+\f1\fs26 "normal"
+\f0\fs24  means logins are working. (
+\f1\fs26 "delayed"
+\f0\fs24  or 
+\f1\fs26 "offline"
+\f0\fs24  would indicate login issues.)\
+\ls4\ilvl0
+\f2\b \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 SteamCommunity
+\f0\b0 : Steam Community service (e.g. profile/inventory API). 
+\f1\fs26 "normal"
+\f0\fs24  = operational; 
+\f1\fs26 "delayed"
+\f0\fs24  = slow; 
+\f1\fs26 "offline"
+\f0\fs24  = down.\
+\ls4\ilvl0
+\f2\b \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 IEconItems
+\f0\b0 : In-game economy (inventory/trading) service. 
+\f1\fs26 "normal"
+\f0\fs24  = inventory functional; 
+\f1\fs26 "offline"
+\f0\fs24  = economy is down.\
+\ls4\ilvl0
+\f2\b \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Leaderboards
+\f0\b0 : Competitive leaderboard/ranking service. 
+\f1\fs26 "normal"
+\f0\fs24  = up; 
+\f1\fs26 "idle"
+\f0\fs24  usually means up but no current activity.\
+\pard\pardeftab720\sa240\partightenfactor0
+\cf0 All these keys are stable (not deprecated). In monitoring, any status other than 
+\f1\fs26 "normal"
+\f0\fs24  (or 
+\f1\fs26 "online"
+\f0\fs24  as below) usually signals a partial failure. For example, the Steam Community often shows 
+\f1\fs26 "delayed"
+\f0\fs24  under high load. The CSGO database status site confirms that when everything is fine these values read \'93Normal\'94.\
+\pard\pardeftab720\sa298\partightenfactor0
+
+\f2\b\fs36 \cf0 datacenters\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\b0\fs24 \cf0 This section maps each 
+\f2\b datacenter/region name
+\f0\b0  to an object with two fields: 
+\f1\fs26 capacity
+\f0\fs24  and 
+\f1\fs26 load
+\f0\fs24 . For example:\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs26 \cf0 "datacenters": \{\
+  "EU West":  \{ "capacity": "full", "load": "low"  \},\
+  "EU North": \{ "capacity": "full", "load": "high" \},\
+  "China Shanghai": \{ "capacity": "full", "load": "low" \}\
+  // \'85and so on for each region...\
+\}\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\fs24 \cf0 .\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa240\partightenfactor0
+\ls5\ilvl0
+\f2\b \cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 capacity
+\f0\b0 : Currently always 
+\f1\fs26 "full"
+\f0\fs24  in known outputs. This appears to mean the datacenter is fully provisioned/online. (No other documented values have been observed; it seems to be a static indicator of an active DC.)\
+\ls5\ilvl0
+\f2\b \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 load
+\f0\b0 : A qualitative load metric. Known values are 
+\f1\fs26 "idle"
+\f0\fs24 , 
+\f1\fs26 "low"
+\f0\fs24 , 
+\f1\fs26 "medium"
+\f0\fs24 , or 
+\f1\fs26 "high"
+\f0\fs24 . (For example, the CSGO status site lists regions as \'93Low Load\'94, \'93Idle\'94, or \'93Medium Load\'94.)\
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440\sa240\partightenfactor0
+\ls5\ilvl1
+\f1\fs26 \cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 "idle"
+\f0\fs24 : Very low usage (nearly empty).\
+\ls5\ilvl1
+\f1\fs26 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 "low"
+\f0\fs24 : Light load.\
+\ls5\ilvl1
+\f1\fs26 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 "medium"
+\f0\fs24 : Moderate load.\
+\ls5\ilvl1
+\f1\fs26 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 "high"
+\f0\fs24 : Heavy load.\
+\pard\pardeftab720\sa240\partightenfactor0
+\cf0 No official numeric ranges are given. Monitoring: if a datacenter\'92s 
+\f1\fs26 load
+\f0\fs24  is 
+\f1\fs26 "high"
+\f0\fs24 , that region is under heavy stress. If it were ever not 
+\f1\fs26 "full"
+\f0\fs24  (e.g. a different string), that could indicate a DC offline, but in practice all examples show 
+\f1\fs26 "full"
+\f0\fs24 . The 
+\f1\fs26 capacity
+\f0\fs24  field is stable (always present), and 
+\f1\fs26 load
+\f0\fs24  values remain within the above four states.\
+\pard\pardeftab720\sa298\partightenfactor0
+
+\f2\b\fs36 \cf0 matchmaking\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\b0\fs24 \cf0 This section shows matchmaking system metrics. For example:\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs26 \cf0 "matchmaking": \{\
+  "scheduler":        "normal",\
+  "online_servers":   207747,\
+  "online_players":   643089,\
+  "searching_players":21785,\
+  "search_seconds_avg": 120\
+\}\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\fs24 \cf0 .\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa240\partightenfactor0
+\ls6\ilvl0
+\f2\b \cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 scheduler
+\f0\b0 : Status of the matchmaking scheduler service. Values like 
+\f1\fs26 "normal"
+\f0\fs24  (working) or 
+\f1\fs26 "idle"
+\f0\fs24  appear. (If not normal/idle, matchmaking is impacted.)\
+\ls6\ilvl0
+\f2\b \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 online_servers
+\f0\b0 : (Integer) Total number of game servers currently online. (Fluctuates with player population; e.g. ~200k.)\
+\ls6\ilvl0
+\f2\b \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 online_players
+\f0\b0 : (Integer) Total number of players currently playing CS:GO/CS2. (In the example ~643k.)\
+\ls6\ilvl0
+\f2\b \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 searching_players
+\f0\b0 : (Integer) Players currently searching for a match (e.g. 21785).\
+\ls6\ilvl0
+\f2\b \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 search_seconds_avg
+\f0\b0 : (Integer) Average match search duration (in seconds) among those searching (e.g. 120 = 2 min).\
+\pard\pardeftab720\sa240\partightenfactor0
+\cf0 All numeric fields grow or shrink with demand; they have no fixed upper bound. Monitoring: High 
+\f1\fs26 search_seconds_avg
+\f0\fs24  or a very large 
+\f1\fs26 searching_players
+\f0\fs24  can indicate slow matchmaking. A non-
+\f1\fs26 "normal"
+\f0\fs24  scheduler status means match-queuing is down.\
+\pard\pardeftab720\sa298\partightenfactor0
+
+\f2\b\fs36 \cf0 perfectworld\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\b0\fs24 \cf0 This covers the China (Perfect World) edition services. It has two sub-objects (
+\f1\fs26 logon
+\f0\fs24  and 
+\f1\fs26 purchase
+\f0\fs24 ), each with 
+\f1\fs26 availability
+\f0\fs24  and 
+\f1\fs26 latency
+\f0\fs24 , for example:\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs26 \cf0 "perfectworld": \{\
+  "logon":    \{ "availability": "online", "latency": "normal" \},\
+  "purchase": \{ "availability": "online", "latency": "normal" \}\
+\}\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\fs24 \cf0 .\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa240\partightenfactor0
+\ls7\ilvl0
+\f2\b \cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 logon.availability
+\f0\b0 : 
+\f1\fs26 "online"
+\f0\fs24  or 
+\f1\fs26 "offline"
+\f0\fs24 . Indicates if Perfect World login servers are up (e.g. 
+\f1\fs26 "online"
+\f0\fs24  in the example).\
+\ls7\ilvl0
+\f2\b \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 logon.latency
+\f0\b0 : e.g. 
+\f1\fs26 "normal"
+\f0\fs24 . A measure of login latency; higher values (e.g. 
+\f1\fs26 "high"
+\f0\fs24 ) would mean slow logins. The example shows 
+\f1\fs26 "normal"
+\f0\fs24 .\
+\ls7\ilvl0
+\f2\b \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 purchase.availability
+\f0\b0 : 
+\f1\fs26 "online"
+\f0\fs24 /
+\f1\fs26 "offline"
+\f0\fs24 . Status of the in-game item purchase service.\
+\ls7\ilvl0
+\f2\b \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 purchase.latency
+\f0\b0 : e.g. 
+\f1\fs26 "normal"
+\f0\fs24 . Purchase/store latency status.\
+\pard\pardeftab720\sa240\partightenfactor0
+\cf0 CSGO Database confirms these show \'93Online\'94 when healthy. All four fields are stable (if Perfect World is supported). Monitoring: If 
+\f1\fs26 logon.availability
+\f0\fs24  or 
+\f1\fs26 purchase.availability
+\f0\fs24  is 
+\f1\fs26 "offline"
+\f0\fs24 , the Chinese platform\'92s login or store is down. Any latency value above 
+\f1\fs26 "normal"
+\f0\fs24  indicates degraded performance.\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f2\b \cf0 Health Monitoring:
+\f0\b0  In practice, one would poll this API periodically. Any key deviating from its normal state (e.g. services not 
+\f1\fs26 "normal"
+\f0\fs24 /
+\f1\fs26 "online"
+\f0\fs24 , datacenter load rising to 
+\f1\fs26 "high"
+\f0\fs24 , or matchmaking search times spiking) would signal an issue. The 
+\f1\fs26 app.version
+\f0\fs24  and timestamp help correlate status to specific game builds and times.\
+
+\f2\b Sources:
+\f0\b0  Steam\'92s API docs list 
+\f2\b ICSGOServers_730/GetGameServersStatus
+\f0\b0  (no parameters). The above key names and sample values come from official API responses and status trackers. Each key\'92s meaning and values are inferred from those examples and community documentation.\
+}
