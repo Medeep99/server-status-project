@@ -11,7 +11,7 @@ const ServerData = ({
   apiVersion = process.env.REACT_APP_API_VERSION
 }) => {
 
-  const apiUrl = `${urlData}/${interfaceData}/${methodData}/${apiVersion}/?key=${apiKey}`;
+  const apiUrl = 'http://localhost:5005/api/server-status';
   const [data, setData] = useState(null);        // For storing response data
   const [loading, setLoading] = useState(true);  // For loading state
   const [error, setError] = useState(null); 
