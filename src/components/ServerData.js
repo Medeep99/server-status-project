@@ -11,9 +11,8 @@ const ServerData = ({
   apiVersion = process.env.REACT_APP_API_VERSION
 }) => {
 
-  // const apiUrl = `${urlData}/${interfaceData}/${methodData}/${apiVersion}/?key=${apiKey}`;
-  const apiUrl = "https://cors-anywhere.herokuapp.com/https://api.steampowered.com/ICSGOServers_730/GetGameServersStatus/v1/?key=A65C0811A5C281AD5E381F0538DD2334"
-   const [data, setData] = useState(null);        // For storing response data
+  const apiUrl = `${urlData}/${interfaceData}/${methodData}/${apiVersion}/?key=${apiKey}`;
+  const [data, setData] = useState(null);        // For storing response data
   const [loading, setLoading] = useState(true);  // For loading state
   const [error, setError] = useState(null); 
 
@@ -21,7 +20,7 @@ const ServerData = ({
   fetchData();
    const interval = setInterval(() => {
       fetchData();
-    }, 100000); // Fetch data every 100 seconds
+    }, 600000); //get data every 10 minutes
 
     return () => clearInterval(interval); // Cleanup on unmount
   }, []);
