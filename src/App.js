@@ -1,15 +1,13 @@
+import "./App.css";
 
-import './App.css';
-import DataTable from './components/DataTable';
-import MatchMakingBoard from './components/MatchMakingBoard';
-import NavigationBar from './components/NavigationBar';
+import NavigationBar from "./components/NavigationBar";
+import ServerData from "./components/ServerData";
 
 function App() {
   return (
     <>
       <NavigationBar />
-      <MatchMakingBoard />
-      <DataTable />
+      <ServerData />
     </>
   );
 }
