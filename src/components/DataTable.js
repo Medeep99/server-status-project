@@ -1,3 +1,4 @@
+import { tab } from "@testing-library/user-event/dist/tab";
 import React from "react";
 
 export default function DataTable(props) {
@@ -44,8 +45,16 @@ export default function DataTable(props) {
     }
   };
 
+  const requiredDataCenter = [
+    tableData["Singapore"],
+    tableData["India Mumbai"],
+    tableData["India Chennai"],
+    tableData["Emirates"],
+    tableData["US Dallas"],
+  ]
+ console.log(requiredDataCenter);
   return (
-    <div className="bg-gray-100 min-h-screen p-6">
+    <div className="bg-gray-100 p-6">
       <section className="container mx-auto">
         <div className="overflow-hidden rounded-xl shadow-md bg-white">
           <div className="overflow-x-auto">
