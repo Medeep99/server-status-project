@@ -30,7 +30,7 @@ export default function MatchMakingBoard(props) {
   return (
     <section>
       <div className="bg-gray-100">
-        <div className="py-8 px-12 flex flex-col h-full w-full mx-auto  space-y-8">
+        <div className="py-6 px-12 flex flex-col h-full w-full mx-auto  space-y-8">
           <section className="flex flex-col mx-auto bg-white rounded-lg p-8 shadow-md space-y-8">
             <div className="text-2xl font-medium text-black-500">
               Global Matchmaking Status <br />

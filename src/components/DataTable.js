@@ -1,4 +1,3 @@
-import { tab } from "@testing-library/user-event/dist/tab";
 import React from "react";
 
 export default function DataTable(props) {
@@ -36,14 +35,14 @@ export default function DataTable(props) {
     }
   };
 
-  // Function to check the status of the datacenter
-  const checkStatus = (datacenter) => {
-    if (checkAvailability(datacenter)) {
-      return "text-green-800 bg-green-300";
-    } else {
-      return "text-red-800 bg-red-300";
-    }
-  };
+  // // Function to check the status of the datacenter
+  // const checkStatus = (datacenter) => {
+  //   if (checkAvailability(datacenter)) {
+  //     return "text-green-800 bg-green-300";
+  //   } else {
+  //     return "text-red-800 bg-red-300";
+  //   }
+  // };
 
   return (
     <div className="bg-gray-100 p-6">

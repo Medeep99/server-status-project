@@ -7,7 +7,9 @@ function App() {
   return (
     <>
       <NavigationBar />
-      <ServerData />
+    
+        <ServerData/>
+   
     </>
   );
 }
